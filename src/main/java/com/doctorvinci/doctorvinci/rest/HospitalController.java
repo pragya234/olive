@@ -38,7 +38,7 @@ also the frontend has to pass a header content-type application/json otherwise r
 produces = MediaType.APPLICATION_JSON_VALUE--this implies that the outgoing response will be converted to json
 and sent
 @RequestMapping: is used to map a request between frontend and a single backend method
-Controller's work is to do adan pradan of model, it will itself not do any logical processing, it will pass
+Controller's work is to do adan-pradan of model, it will itself not do any logical processing, it will pass
 the received data/request to the service class.
 service class will process the request and return the response to controller and controller will pass back the same response to frontend
 ResponseEntity<Void>: ResponseEntity<any class> means whatever we want to return is wrapped around <>

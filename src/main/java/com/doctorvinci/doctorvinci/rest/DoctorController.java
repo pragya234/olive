@@ -1,7 +1,5 @@
 package com.doctorvinci.doctorvinci.rest;
 
-import com.doctorvinci.doctorvinci.dbservice.DoctorDetailsDbService;
-import com.doctorvinci.doctorvinci.dbservice.impl.DoctorDetailsDbServiceImpl2;
 import com.doctorvinci.doctorvinci.models.DoctorDetails;
 import com.doctorvinci.doctorvinci.models.DoctorType;
 import com.doctorvinci.doctorvinci.models.Slot;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "doctor")
 public class DoctorController {
-  private DoctorService doctorService = new DoctorService();
+  //private DoctorService doctorService = new DoctorService();
 
   /*
   1. register a doctor  : it will use post method
@@ -29,7 +27,7 @@ public class DoctorController {
       consumes = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody ResponseEntity<Void> registerADoctor(
       @RequestBody DoctorDetails doctorDetails) {
-    doctorService.registerADoctor(doctorDetails);
+    //doctorService.registerADoctor(doctorDetails);
     return  ResponseEntity.ok(null);
   }
 
@@ -75,6 +73,7 @@ public class DoctorController {
     return null;
   }
 }
+
 /*
 two things with a method:
 declaring a method

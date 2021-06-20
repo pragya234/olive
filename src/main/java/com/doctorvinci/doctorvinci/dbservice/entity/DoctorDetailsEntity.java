@@ -25,7 +25,7 @@ public class DoctorDetailsEntity {
   private String helperContact;
 
   @Column(name = "address_id")
-  private String addressId;
+  private int addressId;
 
   @Column(name = "doctor_fee")
   private int doctorFee;
@@ -40,6 +40,7 @@ public class DoctorDetailsEntity {
   private String doctorImageUrl;
 
   @Column(name = "doctor_type")
+ // private DoctorType doctorType;
   private DoctorType doctorType;
 
   private boolean hasAllowedFreeRevisit;

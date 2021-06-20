@@ -5,13 +5,6 @@ import lombok.Data;
 @Data
 public class Order {
 
-  /* private Order_id
-          Slot_id
-  Customer_id
-          Doctor_id
-  Order_time_stamp
-          Visit_date
-  Order_status*/
   private int orderId;
   private int slotId;
   private int customerId;

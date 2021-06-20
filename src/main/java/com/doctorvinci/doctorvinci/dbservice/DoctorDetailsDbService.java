@@ -7,23 +7,34 @@ import java.util.List;
 
 public interface DoctorDetailsDbService {
   void saveDoctorDetailInDb(DoctorDetails doctorDetails);
+  void saveHospitalDoctorDetails(DoctorDetails doctorDetails, int hospitalId, int hospitalAddressId);
+  void saveHospitalDoctorDetails(List<DoctorDetails> doctorDetailsList, int hospitalId, int hospitalAddressId);
 
   void deleteDoctorDetailInDb(int doctorId);
 
   DoctorDetails retrieveDoctorDetailsFromDb(int doctorId);
 
-  List<DoctorDetails> retrieveDoctorDetailsByDoctorTypeAndAddress(
-      DoctorType doctorType, List<Address> addresses);
+  List<DoctorDetails> retrieveDoctorDetailsByDoctorTypeAndCity(
+      DoctorType doctorType, String city );
+
+  List<DoctorDetails> getDoctorsInLatitudeAndLongitudeRange(double latitudeStart, double latitudeEnd, double longitudeStart,
+                                                            double longitudeEnd);
+  List<DoctorDetails> getDoctorsInLatitudeAndLongitudeRangeByDoctorType(double latitudeStart, double latitudeEnd, double longitudeStart,
+                                                            double longitudeEnd, DoctorType doctorType);
+
+  List<DoctorDetails> getDoctorsByHospitalId(int hospitalId, Address hospitalAddress);
+
+
 }
 /*address_table
-address_id address_line1 address_line2 city pin_code state
+address_id address_line1 address_line2 city pin_code statee
 123         Aamghat          new colony ghazipur 233001 u.p
 125        chaukaghat       kachiyawa   varanasi 221002  u.p
 134        dadrighat                      ghazipur 233001  u.p
 456                                      ghazipur
 124                                      ghazipur
  */
-// select * from address where city='ghazipur';
+// select * from address where city='ghazipur';String
 // 123 134 456 124
 /*
 doctor_table

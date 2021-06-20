@@ -1,4 +1,6 @@
 package com.doctorvinci.doctorvinci.dbservice.impl;
 
-public class LogInRequestDbServiceImpl {
+import com.doctorvinci.doctorvinci.dbservice.LogInRequestDbService;
+
+public class LogInRequestDbServiceImpl implements LogInRequestDbService {
 }
