@@ -7,15 +7,16 @@ public class LogInRequest {
   public void setUserType(UserType userType) {
     this.userType = userType;
   }
-    public UserType getUserType() {
-      return this.userType;
+
+  public UserType getUserType() {
+    return this.userType;
   }
 
   public void setMobileNumber(String mobileNumber) {
     this.mobileNumber = mobileNumber;
   }
-    public String getMobileNumber() {
-      return this.mobileNumber;
+
+  public String getMobileNumber() {
+    return this.mobileNumber;
   }
 }
-

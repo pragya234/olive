@@ -1,5 +1,6 @@
 package com.doctorvinci.doctorvinci.rest;
 
+import com.doctorvinci.doctorvinci.exception.DoctorServiceRequestProcessingException;
 import com.doctorvinci.doctorvinci.models.DoctorDetails;
 import com.doctorvinci.doctorvinci.models.DoctorType;
 import com.doctorvinci.doctorvinci.models.Slot;
@@ -12,7 +13,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "doctor")
 public class DoctorController {
-  //private DoctorService doctorService = new DoctorService();
+  private final DoctorService doctorService;
+
+  public DoctorController(DoctorService doctorService) {
+    this.doctorService = doctorService;
+  }
+  // private DoctorService doctorService = new DoctorService();
 
   /*
   1. register a doctor  : it will use post method
@@ -23,47 +29,45 @@ public class DoctorController {
   */
   @RequestMapping(
       method = RequestMethod.POST,
-      value = "/register",
+      value =
+          "/register", // we have not done anything technically wrong, but this is not the best
+                       // practice.
       consumes = MediaType.APPLICATION_JSON_VALUE)
-  public @ResponseBody ResponseEntity<Void> registerADoctor(
-      @RequestBody DoctorDetails doctorDetails) {
-    //doctorService.registerADoctor(doctorDetails);
-    return  ResponseEntity.ok(null);
+  public @ResponseBody ResponseEntity registerADoctor(@RequestBody DoctorDetails doctorDetails)
+      throws DoctorServiceRequestProcessingException {
+    doctorService.registerADoctor(doctorDetails);
+    return ResponseEntity.ok()
+        .build(); // isme kuchh bhi nhi return hoga, bas http status return hoga, 200
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{doctorId}")
-  public @ResponseBody ResponseEntity<Void> removeDoctor(
-      @PathVariable(name = "doctorId") int doctorId) {
-    return null;
+  public @ResponseBody ResponseEntity removeDoctor(@PathVariable(name = "doctorId") int doctorId)
+      throws DoctorServiceRequestProcessingException {
+    doctorService.removeDoctor(doctorId);
+    return ResponseEntity.ok().build();
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/{doctorId}")
   public @ResponseBody ResponseEntity<Void> updateDoctorDetails(
-      @RequestBody DoctorDetails doctorDetails) {
-    return null;
+      @RequestBody DoctorDetails doctorDetails) throws DoctorServiceRequestProcessingException {
+    doctorService.updateDoctorDetails(doctorDetails);
+    return ResponseEntity.ok().build();
   }
 
   @RequestMapping(
       method = RequestMethod.GET,
-      value = "/doctor/{name}",
-      produces = MediaType.APPLICATION_JSON_VALUE)
-  public @ResponseBody ResponseEntity<List<DoctorDetails>> getDoctorDetails(
-      @PathVariable("name") String drName) {
-    return null;
-  }
-
-  @RequestMapping(
-      method = RequestMethod.GET,
-      value = "/nearByDoctors/{cityName}",
+      value = "/nearByDoctors",
       produces = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody ResponseEntity<List<DoctorDetails>> getNearbyDoctors(
-      @PathVariable("cityName") String cityName,
-      @RequestParam(value = "longitude", required = false) double longitude,
-      @RequestParam(value = "latitude", required = false) double latitude,
-      @RequestParam(value = "pageSize", required = false) int pageSize,
-      @RequestParam(value = "offset", required = false) double offset,
+      @RequestParam(value = "cityName", required = false) String cityName,
+      @RequestParam(value = "longitude", required = false) Double longitude,
+      @RequestParam(value = "latitude", required = false) Double latitude,
+      @RequestParam(value = "pageSize", required = false) Integer pageSize,
+      @RequestParam(value = "offset", required = false) Double offset,
       @RequestParam(value = "speciality", required = false) DoctorType doctorType) {
-    return null;
+    List<DoctorDetails> doctorDetailsList =
+        doctorService.getNearByDoctors(cityName, longitude, latitude, pageSize, offset, doctorType);
+    return ResponseEntity.ok(doctorDetailsList);
   }
 
   @GetMapping(value = "/doctor/{doctorId}/slot")

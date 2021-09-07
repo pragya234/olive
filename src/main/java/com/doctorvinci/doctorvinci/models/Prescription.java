@@ -1,11 +1,10 @@
 package com.doctorvinci.doctorvinci.models;
 
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 @Data
 public class Prescription {
-    private int bookingId;
-    private List<Medicine> medicines;
+  private int bookingId;
+  private List<Medicine> medicines;
 }

@@ -7,24 +7,34 @@ import java.util.List;
 
 public interface DoctorDetailsDbService {
   void saveDoctorDetailInDb(DoctorDetails doctorDetails);
-  void saveHospitalDoctorDetails(DoctorDetails doctorDetails, int hospitalId, int hospitalAddressId);
-  void saveHospitalDoctorDetails(List<DoctorDetails> doctorDetailsList, int hospitalId, int hospitalAddressId);
+
+  void saveHospitalDoctorDetails(
+      DoctorDetails doctorDetails, int hospitalId, int hospitalAddressId);
+
+  void saveHospitalDoctorDetails(
+      List<DoctorDetails> doctorDetailsList, int hospitalId, int hospitalAddressId);
 
   void deleteDoctorDetailInDb(int doctorId);
 
   DoctorDetails retrieveDoctorDetailsFromDb(int doctorId);
 
-  List<DoctorDetails> retrieveDoctorDetailsByDoctorTypeAndCity(
-      DoctorType doctorType, String city );
+  DoctorDetails retrieveDoctorDetailsByPhoneNumber(String phoneNumber);
 
-  List<DoctorDetails> getDoctorsInLatitudeAndLongitudeRange(double latitudeStart, double latitudeEnd, double longitudeStart,
-                                                            double longitudeEnd);
-  List<DoctorDetails> getDoctorsInLatitudeAndLongitudeRangeByDoctorType(double latitudeStart, double latitudeEnd, double longitudeStart,
-                                                            double longitudeEnd, DoctorType doctorType);
+  List<DoctorDetails> getDoctorsInCity(String city);
+
+  List<DoctorDetails> retrieveDoctorDetailsByDoctorTypeAndCity(DoctorType doctorType, String city);
+
+  List<DoctorDetails> getDoctorsInLatitudeAndLongitudeRange(
+      double latitudeStart, double latitudeEnd, double longitudeStart, double longitudeEnd);
+
+  List<DoctorDetails> getDoctorsInLatitudeAndLongitudeRangeByDoctorType(
+      double latitudeStart,
+      double latitudeEnd,
+      double longitudeStart,
+      double longitudeEnd,
+      DoctorType doctorType);
 
   List<DoctorDetails> getDoctorsByHospitalId(int hospitalId, Address hospitalAddress);
-
-
 }
 /*address_table
 address_id address_line1 address_line2 city pin_code statee
@@ -50,7 +60,6 @@ doctor_id  doctor_name  email_id  doctor_type address_id
 234         Pragya Pandey pandeypragya026@gmail Cardiologist 123
 721        Niharika Singh  niha@gmail       cardiologist    134
  */
-
 
 /*
 DoctorDetailsDbServiceForSqlServerDb implements DoctorDetailsDbService

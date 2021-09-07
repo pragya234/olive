@@ -1,18 +1,22 @@
 package com.doctorvinci.doctorvinci.dbservice;
 
 import com.doctorvinci.doctorvinci.models.Address;
-
 import java.util.Map;
 import java.util.Set;
 
 public interface AddressDbService {
-    Address getAddressById(int addressId);
-    int saveAddress(Address address);
-    void deleteAddress(int addressId);
-    Map<Integer, Address> getAddressForIds(Set<Integer> addressIds);
-    Map<Integer, Address> getByCity(String city);
-    Map<Integer, Address> findAddressWithinLatitudeAndLongitudeRange(double latitudeStart, double latitudeEnd, double longitudeStart,
-                                                                   double longitudeEnd);
+  Address getAddressById(int addressId);
+
+  int saveAddress(Address address);
+
+  void deleteAddress(int addressId);
+
+  Map<Integer, Address> getAddressForIds(Set<Integer> addressIds);
+
+  Map<Integer, Address> getByCity(String city);
+
+  Map<Integer, Address> findAddressWithinLatitudeAndLongitudeRange(
+      double latitudeStart, double latitudeEnd, double longitudeStart, double longitudeEnd);
 }
 
 /*

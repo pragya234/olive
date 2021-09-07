@@ -3,6 +3,7 @@ package com.doctorvinci.doctorvinci.dbservice.entity;
 import com.doctorvinci.doctorvinci.models.UserType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -10,6 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name = "log_in_request")
 public class LogInRequestEntity {
+  @Id
   @Column(name = "mobile_number")
   private String mobileNumber;
 

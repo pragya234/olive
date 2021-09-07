@@ -1,4 +1,5 @@
 package com.doctorvinci.doctorvinci.rest;
+
 import com.doctorvinci.doctorvinci.models.HomePage;
 import com.doctorvinci.doctorvinci.service.HomePageService;
 import org.springframework.http.ResponseEntity;
@@ -8,17 +9,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "homepage")
 public class HomePageController {
   private final HomePageService homePageService;
-  //instance variable, cant be accessed without creating object
+  // instance variable, cant be accessed without creating object
   public HomePageController(HomePageService homePageService) {
 
-    this.homePageService = homePageService; //homePageController ka object, jisme homepage service
+    this.homePageService = homePageService; // homePageController ka object, jisme homepage service
     // variable pass hua hai usko home page service ka object assign kar dete hain
   }
-/*
-this ka matlab hota hai current object, jab bhi koi homepagecontroller ka object
-banayega tab vo homepageservice ka ek object pass karega. ab kyunki hamne homepageservice ka object level variable
-declare kiya hai, to hume use assign karna chahiye that only we are doing inside the constructor
-*/
+  /*
+  this ka matlab hota hai current object, jab bhi koi homepagecontroller ka object
+  banayega tab vo homepageservice ka ek object pass karega. ab kyunki hamne homepageservice ka object level variable
+  declare kiya hai, to hume use assign karna chahiye that only we are doing inside the constructor
+  */
   @GetMapping(value = "/{city}")
   public ResponseEntity<HomePage> getHomepage(
       @PathVariable(value = "city") String city,
@@ -27,7 +28,6 @@ declare kiya hai, to hume use assign karna chahiye that only we are doing inside
     HomePage homePage = homePageService.getHomepage(city, latitude, longitude);
     return ResponseEntity.ok(homePage);
   }
-
 }
 
 /*https://meet.google.com/ccr-ckdi-obj?pli=1&authuser=1

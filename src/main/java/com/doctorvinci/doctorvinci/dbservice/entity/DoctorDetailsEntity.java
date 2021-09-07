@@ -30,6 +30,9 @@ public class DoctorDetailsEntity {
   @Column(name = "doctor_fee")
   private int doctorFee;
 
+  @Column(name ="is_hospital_doctor")
+  private boolean isHospitalDoctor;
+
   @Column(name = "hospital_id")
   private int hospitalId;
 
@@ -40,24 +43,20 @@ public class DoctorDetailsEntity {
   private String doctorImageUrl;
 
   @Column(name = "doctor_type")
- // private DoctorType doctorType;
   private DoctorType doctorType;
 
+  @Column(name = "has_allowed_free_revisit")
   private boolean hasAllowedFreeRevisit;
+
+  @Column(name = "free_revisit_till_x_days_after_order")
   private int freeRevisitTillXDaysAfterOrder;
+
+  @Column(name = "has_allowed_free_chat")
   private boolean hasAllowedFreeChat;
+
+  @Column(name = "free_chat_till_x_days_after_order")
   private int freeChatTillXDaysAfterOrder;
-  /*
 
-
-  Is_hospital_doctor
-
-  Doctor_type
-  Has_allowed_free_revisit
-  Free_revisit_till_x_days_after_order
-  has_allowed_free _chat
-  free_chat_till_x_days_after_order
-   */
 }
 
 /*

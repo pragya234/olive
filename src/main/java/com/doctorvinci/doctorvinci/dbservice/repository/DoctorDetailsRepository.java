@@ -2,23 +2,28 @@ package com.doctorvinci.doctorvinci.dbservice.repository;
 
 import com.doctorvinci.doctorvinci.dbservice.entity.DoctorDetailsEntity;
 import com.doctorvinci.doctorvinci.models.DoctorType;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
 import java.util.List;
 import java.util.Set;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DoctorDetailsRepository extends JpaRepository<DoctorDetailsEntity, Integer> {
-    DoctorDetailsEntity findByDoctorId(Integer doctorId);
-    List<DoctorDetailsEntity> findByDoctorType(DoctorType doctorType);
-    List<DoctorDetailsEntity> findByHospitalId(Integer hospitalId);
-    DoctorDetailsEntity findByPhoneNumber(String phoneNumber); //why
-    List<DoctorDetailsEntity> findByAddressIdIn(Set<Integer> addressIds);
-    List<DoctorDetailsEntity> findByDoctorTypeAndAddressIdIn(DoctorType doctorType, Set<Integer> addressIds);
+  DoctorDetailsEntity findByDoctorId(Integer doctorId);
 
+  List<DoctorDetailsEntity> findByDoctorType(DoctorType doctorType);
 
+  List<DoctorDetailsEntity> findByHospitalId(Integer hospitalId);
 
+  DoctorDetailsEntity findByPhoneNumber(String phoneNumber); // why
 
+  List<DoctorDetailsEntity> findByCity(String city);
+
+  List<DoctorDetailsEntity> findByAddressIdIn(Set<Integer> addressIds);
+
+  List<DoctorDetailsEntity> findByDoctorTypeAndAddressIdIn(
+      DoctorType doctorType, Set<Integer> addressIds);
+
+  @Override
+  void deleteById(Integer integer);
 }
 
 /*

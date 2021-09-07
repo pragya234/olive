@@ -1,7 +1,6 @@
 package com.doctorvinci.doctorvinci.dbservice.entity;
 
 import javax.persistence.*;
-
 import lombok.Data;
 
 @Data
@@ -9,7 +8,7 @@ import lombok.Data;
 @Table(name = "address")
 public class AddressEntity {
   @Id
-  @GeneratedValue(strategy= GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "address_id")
   private int addressId;
 

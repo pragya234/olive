@@ -2,9 +2,8 @@ package com.doctorvinci.doctorvinci.rest;
 
 import com.doctorvinci.doctorvinci.models.DoctorBookingResponse;
 import com.doctorvinci.doctorvinci.models.Order;
-import java.util.List;
-
 import com.doctorvinci.doctorvinci.service.OrderService;
+import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,8 @@ public class OrderController {
       @PathVariable(value = "doctorId") int doctorId,
       @PathVariable(value = "slotId") int slotId,
       @RequestParam(value = "booking-date", required = true) String date) {
-    DoctorBookingResponse doctorBookingResponse=orderService.bookDoctorInHospital(hospitalId, doctorId, slotId, date);
+    DoctorBookingResponse doctorBookingResponse =
+        orderService.bookDoctorInHospital(hospitalId, doctorId, slotId, date);
     return ResponseEntity.ok(doctorBookingResponse);
   }
 
@@ -33,7 +33,7 @@ public class OrderController {
       @PathVariable(value = "doctorId") int doctorId,
       @PathVariable(value = "slotId") int slotId,
       @RequestParam(value = "booking-date", required = true) String date) {
-    DoctorBookingResponse doctorBookingResponse=orderService.bookDoctor(doctorId,slotId,date);
+    DoctorBookingResponse doctorBookingResponse = orderService.bookDoctor(doctorId, slotId, date);
     return null;
   }
 

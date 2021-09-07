@@ -1,25 +1,29 @@
 package com.doctorvinci.doctorvinci.dbservice.repository;
 
 import com.doctorvinci.doctorvinci.dbservice.entity.AddressEntity;
-import com.doctorvinci.doctorvinci.dbservice.entity.DoctorDetailsEntity;
-import com.doctorvinci.doctorvinci.models.DoctorType;
+import java.util.List;
+import java.util.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
-import java.util.Set;
-
 public interface AddressRepository extends JpaRepository<AddressEntity, Integer> {
-    AddressEntity findByAddressId(int addressId);
-    List<AddressEntity> findByPinCode(String pinCode);
-    @Query(value="select * from address where city=?1 and state=?2", nativeQuery = true)
-    List<AddressEntity> findByCityAndState(String city, String state);
-    List<AddressEntity> findByAddressIdIn(Set<Integer> addressIds);
-    List<AddressEntity> findByCity(String city);
-    @Query(value="select * from address where latitude >=?1 and latitude <=?2 and longitude >=?3 and longitude<=?4", nativeQuery = true)
-    List<AddressEntity> findAddressWithinLatitudeAndLongitudeRange(double latitudeStart, double latitudeEnd, double longitudeStart,
-                                                                               double longitudeEnd);
+  AddressEntity findByAddressId(int addressId);
 
+  List<AddressEntity> findByPinCode(String pinCode);
+
+  @Query(value = "select * from address where city=?1 and state=?2", nativeQuery = true)
+  List<AddressEntity> findByCityAndState(String city, String state);
+
+  List<AddressEntity> findByAddressIdIn(Set<Integer> addressIds);
+
+  List<AddressEntity> findByCity(String city);
+
+  @Query(
+      value =
+          "select * from address where latitude >=?1 and latitude <=?2 and longitude >=?3 and longitude<=?4",
+      nativeQuery = true)
+  List<AddressEntity> findAddressWithinLatitudeAndLongitudeRange(
+      double latitudeStart, double latitudeEnd, double longitudeStart, double longitudeEnd);
 }
 
 /*
