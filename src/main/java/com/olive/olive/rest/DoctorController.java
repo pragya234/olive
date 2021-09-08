@@ -29,9 +29,8 @@ public class DoctorController {
   */
   @RequestMapping(
       method = RequestMethod.POST,
-      value =
-          "/register", // we have not done anything technically wrong, but this is not the best
-                       // practice.
+      value = "/register", // we have not done anything technically wrong, but this is not the best
+      // practice.
       consumes = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody ResponseEntity registerADoctor(@RequestBody DoctorDetails doctorDetails)
       throws DoctorServiceRequestProcessingException {

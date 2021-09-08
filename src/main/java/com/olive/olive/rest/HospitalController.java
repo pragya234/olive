@@ -99,7 +99,7 @@ public class HospitalController {
   public @ResponseBody ResponseEntity<HospitalDetails> getHospitalDetails(
       @PathVariable("hospitalId") Integer id, @PathVariable("name") String aspatalKaNaam) {
     return null;
-    // doctorvinci.com/hospital/fetchHospital/12445/cityhospital
+    // olive.com/hospital/fetchHospital/12445/cityhospital
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{hospitalId}")

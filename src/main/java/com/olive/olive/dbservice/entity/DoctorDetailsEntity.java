@@ -30,7 +30,7 @@ public class DoctorDetailsEntity {
   @Column(name = "doctor_fee")
   private int doctorFee;
 
-  @Column(name ="is_hospital_doctor")
+  @Column(name = "is_hospital_doctor")
   private boolean isHospitalDoctor;
 
   @Column(name = "hospital_id")
@@ -56,7 +56,6 @@ public class DoctorDetailsEntity {
 
   @Column(name = "free_chat_till_x_days_after_order")
   private int freeChatTillXDaysAfterOrder;
-
 }
 
 /*
